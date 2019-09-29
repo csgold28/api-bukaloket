@@ -1,0 +1,41 @@
+"use strict";
+
+/*
+|--------------------------------------------------------------------------
+| Routes
+|--------------------------------------------------------------------------
+|
+| Http routes are entry points to your web application. You can create
+| routes for different URLs and bind Controller actions to them.
+|
+| A complete guide on routing is available here.
+| http://adonisjs.com/docs/4.1/routing
+|
+*/
+
+/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
+const Route = use("Route");
+
+Route.get("/", () => {
+  return { greeting: "Hello world in JSON" };
+});
+
+Route.post("/api/register", "AuthController.register").validator("register");
+Route.post("/api/login", "AuthController.login").validator("login");
+Route.post("/api/profile", "ProfileController.store")
+  .middleware("auth")
+  .validator("profile");
+Route.put("/api/edit_profile/:id", "ProfileController.update").middleware(
+  "auth"
+);
+
+Route.get("/api/product", "ProductController.showProduct");
+Route.post("api/create_categorie", "ProductController.createCategori");
+Route.post("api/create_operator", "ProductController.createOperator");
+Route.post("api/create_product/:id", "ProductController.createProduct");
+
+Route.post("api/tiket_depo", "TiketDepoController.creatTiketDepo").middleware(
+  "auth"
+);
+
+Route.get("/api/tes", "TiketDepoController.test");
