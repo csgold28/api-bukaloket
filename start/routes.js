@@ -20,8 +20,12 @@ Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
 
+//auth
 Route.post("/api/register", "AuthController.register").validator("register");
 Route.post("/api/login", "AuthController.login").validator("login");
+Route.post("/api/logout", "AuthController.logout").middleware("auth:jwt");
+
+//profile
 Route.post("/api/profile", "ProfileController.store")
   .middleware("auth")
   .validator("profile");

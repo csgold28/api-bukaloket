@@ -35,6 +35,12 @@ class AuthController {
       return response.json({ message: "No. Handphone atau Password salah!" });
     }
   }
+
+  async logout({ auth, response }) {
+    const apiToken = auth.getAuthHeader();
+    await auth.authenticator("jwt").revokeTokens([apiToken]);
+    return response.send({ message: "Logout successfully!" });
+  }
 }
 
 module.exports = AuthController;
