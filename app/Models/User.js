@@ -43,6 +43,22 @@ class User extends Model {
   tiketdeposit() {
     return this.hasMany("App/Models/TiketDeposit");
   }
+
+  deposit() {
+    return this.hasOne("App/Models/Deposit");
+  }
+
+  komisi() {
+    return this.hasOne("App/Models/Komisi");
+  }
+
+  point() {
+    return this.hasOne("App/Models/Point");
+  }
+
+  profile() {
+    return this.hasOne("App/Models/Profile");
+  }
 }
 
 module.exports = User;

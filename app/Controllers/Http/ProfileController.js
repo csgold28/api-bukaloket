@@ -19,7 +19,8 @@ class ProfileController {
 
   async update({ request, params, response }) {
     const profile = await Profile.find(params.id);
-    profile.gender = request.input("gender");
+    profile.email = request.input("email");
+    profile.foto = request.input("foto");
     profile.nik = request.input("nik");
     profile.alamat = request.input("alamat");
     profile.provinsi = request.input("provinsi");

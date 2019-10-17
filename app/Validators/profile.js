@@ -6,6 +6,7 @@ class profile {
       // validation rules
       gender: "required",
       nik: "required|unique:profiles",
+      email: "required|email|unique:profiles",
       alamat: "required",
       provinsi: "required",
       kota: "required",
@@ -18,6 +19,9 @@ class profile {
       "gender.required": "Jenis kelamin harus diisi.",
       "nik.required": "Nomor KTP harus diisi.",
       "nik.unique": "Nomor KTP sudah terdaftar.",
+      "email.required": "E-Mail harus diisi.",
+      "email.unique": "E-Mail sudah terdaftar.",
+      "email.email": "Penulisan E-Mail tidak valid.",
       "alamat.required": "Alamat harus diisi",
       "provinsi.required": "Provinsi harus diisi.",
       "kota.required": "Kota harus diisi",
