@@ -3,24 +3,23 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use("Schema");
 
-class TransactionSchema extends Schema {
+class KomisiSchema extends Schema {
   up() {
-    this.create("transactions", table => {
+    this.create("komisis", table => {
       table.increments();
       table
         .integer("user_id")
         .unsigned()
         .references("id")
         .inTable("users");
-      table.string("invoice");
-      table.integer("total");
+      table.integer("komisi");
       table.timestamps();
     });
   }
 
   down() {
-    this.drop("transactions");
+    this.drop("komisis");
   }
 }
 
-module.exports = TransactionSchema;
+module.exports = KomisiSchema;

@@ -35,13 +35,10 @@ class User extends Model {
   static get hidden() {
     return ["password"];
   }
-  tokens() {
-    return this.hasMany("App/Models/Token");
-  }
 
-  profile() {
-    return this.hasOne("App/Models/Profile");
-  }
+  // profile() {
+  //   return this.hasOne("App/Models/Profile");
+  // }
 
   tiketdeposit() {
     return this.hasMany("App/Models/TiketDeposit");

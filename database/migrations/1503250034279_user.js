@@ -12,18 +12,6 @@ class UserSchema extends Schema {
         .string("phone", 254)
         .notNullable()
         .unique();
-      table
-        .integer("deposit")
-        .notNullable()
-        .defaultTo(0);
-      table
-        .integer("poin")
-        .notNullable()
-        .defaultTo(0);
-      table
-        .integer("komisi")
-        .notNullable()
-        .defaultTo(0);
       table.string("password", 254).notNullable();
       table.timestamps();
     });
