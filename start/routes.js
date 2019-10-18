@@ -33,9 +33,14 @@ Route.put("/api/edit_profile/:id", "ProfileController.update").middleware(
   "auth"
 );
 
-Route.get("/api/product", "ProductController.showProduct");
-Route.post("api/create_categorie", "ProductController.createCategori");
-Route.post("api/create_operator", "ProductController.createOperator");
+//product
+Route.get("/api/product", "ProductController.index").middleware("auth");
+
+Route.post(
+  "api/create_categorie",
+  "ProductController.createCategori"
+).middleware("auth");
+Route.post("api/create_operator/:id", "ProductController.createOperator");
 Route.post("api/create_product/:id", "ProductController.createProduct");
 
 Route.post("api/tiket_depo", "TiketDepoController.creatTiketDepo").middleware(
