@@ -59,6 +59,10 @@ class User extends Model {
   profile() {
     return this.hasOne("App/Models/Profile");
   }
+
+  transaction() {
+    return this.hasMany('App/Models/Transaction')
+  }
 }
 
 module.exports = User;
