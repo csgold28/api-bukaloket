@@ -22,11 +22,12 @@ class ProfileController {
       );
     profile.email = request.input("email");
 
-    const myFoto = request.file("foto");
-    profile.foto = new Date().getTime() + "." + myFoto.subtype;
-    await myFoto.move(Helpers.publicPath("upload/profile/foto"), {
-      name: profile.foto
-    });
+    profile.foto = "upload/img/profile/foto/default.png";
+    // const myFoto = request.file("foto");
+    // profile.foto = new Date().getTime() + "." + myFoto.subtype;
+    // await myFoto.move(Helpers.publicPath("upload/profile/foto"), {
+    //   name: profile.foto
+    // });
 
     profile.nik = request.input("nik");
     profile.alamat = request.input("alamat");
@@ -44,12 +45,12 @@ class ProfileController {
     const profile = await Profile.find(params.id);
     profile.email = request.input("email");
 
-    const myFoto = request.file("foto");
-    const cloudinaryResponse = await CloudinaryService.v2.uploader.upload(
-      myFoto.tmpPath,
-      { folder: "bukaloket" }
-    );
-    profile.foto = cloudinaryResponse.secure_url;
+    // const myFoto = request.file("foto");
+    // const cloudinaryResponse = await CloudinaryService.v2.uploader.upload(
+    //   myFoto.tmpPath,
+    //   { folder: "bukaloket" }
+    // );
+    // profile.foto = cloudinaryResponse.secure_url;
 
     profile.nik = request.input("nik");
     profile.alamat = request.input("alamat");
