@@ -4,6 +4,10 @@
 const Model = use("Model");
 
 class Product extends Model {
+  static get hidden() {
+    return ["harga_modal", "is_aktif"];
+  }
+
   operator() {
     return this.belongsTo("App/Models/Operator");
   }
