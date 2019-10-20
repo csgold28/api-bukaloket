@@ -12,12 +12,8 @@ class TiketDepositSchema extends Schema {
         .unsigned()
         .references("id")
         .inTable("users");
-      table.string("invoice");
       table.integer("nominal");
-      table
-        .integer("status")
-        .defaultTo(2)
-        .comment("1=sukses, 2=pending, 3=gagal, 4=refund");
+      table.timestamp("expired");
       table.timestamps();
     });
   }

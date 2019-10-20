@@ -43,8 +43,18 @@ Route.post(
 Route.post("api/create_operator/:id", "ProductController.createOperator");
 Route.post("api/create_product/:id", "ProductController.createProduct");
 
+//creat tiket deposit
 Route.post("api/tiket_depo", "TiketDepoController.creatTiketDepo").middleware(
   "auth"
 );
 
-Route.get("/api/tes", "TiketDepoController.test");
+//Update Deposit
+Route.post("api/update_depo", "DepositController.updateTiketDeposit");
+
+//Transaksi
+Route.get("/api/trx", "TransactionController.createTransaction").middleware(
+  "auth"
+);
+
+//Route Test
+Route.get("/api/tes", "TeController.tes");

@@ -44,6 +44,10 @@ class User extends Model {
     return this.hasMany("App/Models/TiketDeposit");
   }
 
+  depositdetail() {
+    return this.hasMany("App/Models/TiketDepositDetail");
+  }
+
   deposit() {
     return this.hasOne("App/Models/Deposit");
   }
@@ -61,7 +65,7 @@ class User extends Model {
   }
 
   transaction() {
-    return this.hasMany('App/Models/Transaction')
+    return this.hasMany("App/Models/Transaction");
   }
 }
 

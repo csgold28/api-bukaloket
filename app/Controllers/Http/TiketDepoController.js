@@ -1,5 +1,7 @@
 "use strict";
 
+const Moment = use("moment");
+
 class TiketDepoController {
   async creatTiketDepo({ request, response, auth }) {
     const rand = Math.floor(Math.random() * 999) + 1000;
@@ -27,12 +29,24 @@ class TiketDepoController {
       const tiketdeposit = await auth.user
         .tiketdeposit()
         .create(request.only(["invoice", "nominal"]));
-      tiketdeposit.invoice = invoice;
       tiketdeposit.nominal = nomunik;
 
+      //buat expired
+      let exp = Moment()
+        .add(3, "hour")
+        .format("H:mm");
+      tiketdeposit.expired = exp;
       await tiketdeposit.save();
 
-      return response.json(tiketdeposit);
+      const depositdetail = await auth.user
+        .depositdetail()
+        .create(request.only(["invoice", "nominal", "status"]));
+      depositdetail.invoice = invoice;
+      depositdetail.nominal = nomunik;
+      depositdetail.status = 2;
+      await depositdetail.save();
+
+      return response.json(depositdetail);
     } catch (e) {
       console.log(e);
       return response.json({
@@ -40,8 +54,6 @@ class TiketDepoController {
       });
     }
   }
-
-  async test() {}
 }
 
 module.exports = TiketDepoController;
