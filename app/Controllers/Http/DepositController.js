@@ -6,10 +6,12 @@ const DepositDetail = use("App/Models/TiketDepositDetail");
 const Moment = use("moment");
 
 class DepositController {
-  async updateTiketDeposit({ response, request }) {
+  async updateTiketDeposit({ response, auth, request }) {
     // //Cek Exp Tiket Deposit
     // const now = Moment().format("H:mm");
-    // const tiketDepo = await TiketDeposit.findBy("expired",  now);
+    // const trx = await auth.user.tiketdeposit().fetch();
+    // const saldo = trx["created_at"];
+
     // const u = tiketDepo["user_id"];
     // const d = await DepositDetail.findBy("user_id", u);
     // if (tiketDepo <= now) {
@@ -17,10 +19,12 @@ class DepositController {
     //   await tiketDepo.delete();
     // }
 
-    // return response.json(u);
+    // return response.json(saldo);
+
+    //==========================================================
 
     //Response dari cek Bank
-    const balance = 201015;
+    const balance = 101039;
 
     //Update Deposit
     const tiketdeposit = await TiketDeposit.findBy("nominal", balance);
@@ -38,7 +42,6 @@ class DepositController {
       await depositdetail.save();
       await tiketdeposit.delete();
     }
-    return response.json(userDepo);
   }
 }
 

@@ -23,11 +23,11 @@ class AuthController {
         const token = await auth.generate(user);
 
         Object.assign(user, token);
+        await user.load("profile");
         await user.load("deposit");
         await user.load("komisi");
         await user.load("point");
-        await user.load("tiketdeposit");
-        await user.load("profile");
+        await user.load("depositdetail");
         return response.json(user);
       }
     } catch (e) {

@@ -32,9 +32,10 @@ class TiketDepoController {
       tiketdeposit.nominal = nomunik;
 
       //buat expired
-      let exp = Moment()
-        .add(3, "hour")
-        .format("H:mm");
+      // let exp = Moment()
+      //   .add(2, "hour")
+      //   .format("H:mm");
+      var exp = new Date();
       tiketdeposit.expired = exp;
       await tiketdeposit.save();
 

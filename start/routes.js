@@ -49,10 +49,12 @@ Route.post("api/tiket_depo", "TiketDepoController.creatTiketDepo").middleware(
 );
 
 //Update Deposit
-Route.post("api/update_depo", "DepositController.updateTiketDeposit");
+Route.get("api/update_depo", "DepositController.updateTiketDeposit").middleware(
+  "auth"
+);
 
 //Transaksi
-Route.get("/api/trx", "TransactionController.createTransaction").middleware(
+Route.post("/api/trx", "TransactionController.createTransaction").middleware(
   "auth"
 );
 
